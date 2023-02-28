@@ -1,2 +1,2 @@
 # Moodify
-## Reality is often dissapointing isn't it?
+## Reality is often disappointing isn't it?
