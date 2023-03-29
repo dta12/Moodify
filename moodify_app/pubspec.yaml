@@ -29,6 +29,8 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  simple_gradient_text: ^1.2.4
+  
   flutter:
     sdk: flutter
   http: ^0.13.5
@@ -62,10 +64,18 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+      - images/outline_logo.png
+      - images/colors.gif
+      - images/input_background.jpg
 
+  fonts:
+    - family: London_Boutique
+      fonts:
+        - asset: fonts/london_boutique/LondonBoutique.otf
+    - family: Margadeth
+      fonts:
+        - asset: fonts/margadeth/Margadeth.otf
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

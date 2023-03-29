@@ -9,6 +9,7 @@ class EmotionScreen extends StatefulWidget{
   State<StatefulWidget> createState() {
     return new EmotionScreenState(input);
   }
+
 }
 
 class EmotionScreenState extends State<EmotionScreen>{
@@ -53,6 +54,7 @@ class EmotionScreenState extends State<EmotionScreen>{
     });
 
   }
+
 
 
 
