@@ -26,7 +26,7 @@ class InputScreenState extends State<InputScreen>{
             child: Text("Enter"),
             onPressed: () {
              // RetrieveEmotion(myController.text);
-             Navigator.push(context, MaterialPageRoute(builder:(context)=> EmotionScreen()));
+             Navigator.push(context, MaterialPageRoute(builder:(context)=> EmotionScreen(input: myController.text)));
             },
           ),
         ]) 
