@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
@@ -20,7 +22,7 @@ class EmotionScreenState extends State<EmotionScreen>{
   String input;
   Color color = Colors.white;
   String emotion = "";
-  Map emotionColors = {'happy': Colors.green, 'sad': Colors.blue, 'mad': Colors.red};
+  Map emotionColors = {'happy': Colors.green, 'sadness': Colors.blue, 'mad': Colors.red};
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class EmotionScreenState extends State<EmotionScreen>{
       body: Center(
         child: Column(children: [
           Container(width: 100, height: 300),
-          Text("It seems like you are feeling" +  emotion)
+          Text("It seems like you are feeling " +  emotion)
         ])
       )
 
@@ -44,12 +46,27 @@ class EmotionScreenState extends State<EmotionScreen>{
     post(Uri.parse("https://modelserver-382017.ue.r.appspot.com/predict"), body: input);
 
     //get response
-    final response = await get(Uri.parse("https://modelserver-382017.ue.r.appspot.com/predict"));
+    final response = await post(Uri.parse("https://modelserver-382017.ue.r.appspot.com/predict"),
+      headers:{
+        'Content-Type': 'application/json',
+      },
+      body: json.encode ({'sentence': input})
+    );
+
+    var responseData = json.decode(response.body);
+
+    String prediction = "";
+
+   
+      String temp = responseData['prediction'];
+      prediction = temp;
+
+    
 
     setState(() {
-      emotion = response.body;
-      if(emotionColors.containsKey(response.body)){
-        color = emotionColors[response.body];
+      emotion = prediction;
+      if(emotionColors.containsKey(prediction)){
+        color = emotionColors[prediction];
       }
     });
 
