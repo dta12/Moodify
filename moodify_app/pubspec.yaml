@@ -30,6 +30,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   simple_gradient_text: ^1.2.4
+  flutter_svg: ^2.0.4
   
   flutter:
     sdk: flutter
@@ -65,17 +66,22 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-      - images/outline_logo.png
-      - images/colors.gif
-      - images/input_background.jpg
+      - images/logoUpdate.png
+      - images/cloudBackground.png
+      - images/background.png
 
   fonts:
-    - family: London_Boutique
+    - family: CrimsonText
       fonts:
-        - asset: fonts/london_boutique/LondonBoutique.otf
-    - family: Margadeth
+        - asset: fonts/Crimson_Text/CrimsonText-Bold.ttf
+        - asset: fonts/Crimson_Text/CrimsonText-BoldItalic.ttf
+        - asset: fonts/Crimson_Text/CrimsonText-Italic.ttf
+        - asset: fonts/Crimson_Text/CrimsonText-Regular.ttf
+        - asset: fonts/Crimson_Text/CrimsonText-SemiBold.ttf
+        - asset: fonts/Crimson_Text/CrimsonText-SemiBoldItalic.ttf
+    - family: Ravise
       fonts:
-        - asset: fonts/margadeth/Margadeth.otf
+        - asset: fonts/ravise/Ravise-Regular.ttf
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

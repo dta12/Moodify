@@ -24,37 +24,27 @@ class _MyHomePageState extends State<MyHomePage> {
       Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("images/colors.gif"),
+                image: AssetImage("images/cloudBackground.png"),
                 fit: BoxFit.cover),
                 ),
         child: Center(
           child: Column(children: [
-            Container(
-              height: 100,
+            const SizedBox(
+              height: 250,
               // set the width of this Container to 100% screen width
               width: double.infinity,
             ),
-            const Text("Moodify",
-              style: TextStyle( 
-                fontSize: 100,
-                height: 2, //line height 200%, 1= 100%, were 0.9 = 90% of actual line height
-                color: Color.fromRGBO(255, 255, 255, 1), //font color
-              //  backgroundColor: Color.fromARGB(31, 37, 85, 241),
-                letterSpacing: 5, //letter spacing
-                fontFamily: 'Margadeth',
-              ),
-              ),
             Container(
-              height: 200,
-              width: 200,
+              height: 120,
+              width: 350,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("images/outline_logo.png"),
+                  image: AssetImage("images/logoUpdate.png"),
                   fit: BoxFit.cover),
                   ),
             ),
           ])
-        ),    
+        )
       )
     );
   }
