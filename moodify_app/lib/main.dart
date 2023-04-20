@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:moodify_app/Backend/MoodList.dart';
 import 'package:moodify_app/Screens/HomePage.dart';
+import 'package:provider/provider.dart';
+
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => MoodList(),
+      child: const MyApp(),
+    )
+    );
 }
 
 class MyApp extends StatelessWidget {

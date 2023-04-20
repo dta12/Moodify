@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:moodify_app/Screens/InputScreen.dart';
 import 'dart:async';
 
+import 'package:moodify_app/Screens/Navbar.dart';
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
@@ -14,7 +16,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     Timer(Duration(seconds: 5),
-          ()=>Navigator.push(context, MaterialPageRoute(builder:(context) => InputScreen())));
+          ()=>Navigator.push(context, MaterialPageRoute(builder:(context) => BottomBar())));
   }
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Center(
           child: Column(children: [
             const SizedBox(
-              height: 250,
+              height: 320,
               // set the width of this Container to 100% screen width
               width: double.infinity,
             ),

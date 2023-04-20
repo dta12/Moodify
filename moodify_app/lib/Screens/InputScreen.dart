@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:moodify_app/Backend/MoodList.dart';
 import 'package:moodify_app/Screens/EmotionScreen.dart';
 //import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -14,8 +18,14 @@ class InputScreen extends StatefulWidget{
 class InputScreenState extends State<InputScreen>{
   final myController = TextEditingController();
   var validate = false;
+  String emotion = "";
+  MoodList moods = MoodList();
+
+ 
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: 
@@ -51,14 +61,19 @@ class InputScreenState extends State<InputScreen>{
                   suffixIcon: IconButton(
                     icon: Icon(Icons.send),
                     color: Color.fromARGB(255, 32, 56, 128),
-                    onPressed: () {
-             // RetrieveEmotion(myController.text);
-             setState(() {
-                      myController.text.isEmpty ? validate = true : validate = false;
-                    });
-              validate ? null : Navigator.push(context, MaterialPageRoute(builder:(context)=> EmotionScreen(input: myController.text)));
-
-            },
+                    onPressed: () async {
+                      setState(() {
+                            myController.text.isEmpty ? validate = true : validate = false;
+                      });
+                    final response = await post(Uri.parse("https://amr272-assignment1.uc.r.appspot.com/predict"),
+                        headers:{
+                            'Content-Type': 'application/json',
+                          },
+                      body: json.encode ({'sentence': myController.text}));  
+                      var responseData = json.decode(response.body);
+                      String temp = responseData['prediction'];
+                      validate ? null : Navigator.push(context, MaterialPageRoute(builder:(context)=> EmotionScreen(emotion: temp, input: myController.text))); 
+                      },
                   ),
                   filled: true,
                   fillColor: Colors.white,
@@ -84,18 +99,14 @@ class InputScreenState extends State<InputScreen>{
         ]) 
       )
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.question_mark),
-            label: 'Mood Input',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.event_note),
-            label: 'Mood Log',
-          ),
-        ],
-      ),
     );
   }
+
+
+
 }
+
+
+
+
+
