@@ -40,10 +40,10 @@ class CalenderScreenState extends State<CalenderScreen>{
                 child: Column(children: [
                     SizedBox(height: 80, width: 100),
                     Padding(
-                        padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 30),
+                        padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0),
                         child: Text('m o o d   l o g', style: TextStyle(color: Color.fromARGB(255, 9, 33, 76), fontWeight: FontWeight.bold, fontSize: 40,  shadows: [Shadow( offset: Offset(-1.5, -1.5),color: Colors.white ),Shadow( offset: Offset(1.5, -1.5), color: Colors.white), Shadow( offset: Offset(1.5, 1.5),color: Colors.white ),Shadow( offset: Offset(-1.5, 1.5),color: Colors.white ) ])),
                       ), 
-                      Container(
+                      /*Container(
                           height: 45,
                           width: 350,
                           child:TextField(
@@ -52,11 +52,33 @@ class CalenderScreenState extends State<CalenderScreen>{
                               hintText: 'Search for a date or emotion ...',
                               suffixIcon: IconButton(
                                 icon: Icon(Icons.clear),
-                                onPressed:() => _searchController.clear(),
+                                onPressed:() {
+                                  _searchController.clear();
+                                  setState(() {
+                                    moods = context.watch<MoodList>().getMoods().toList();
+                                  });
+                                  
+                                  },
                               ),
                               prefixIcon: IconButton(
                                 icon:Icon(Icons.search),
-                                onPressed:() => {
+                                onPressed:() {
+                                  List<Mood> temp = [];
+                                  for(Mood m in moods){
+                                    if(m.getMood().contains(_searchController.text)){
+                                      temp.add(m);
+                                    }else if(DateFormat.yMd().format(m.date).toString().contains(_searchController.text)){
+                                      temp.add(m);
+                                    }else if(m.getInput().contains(_searchController.text)){
+                                      temp.add(m);
+                                    }
+
+                                   
+                                  }
+                                   setState(() {
+                                      moods= temp;
+                                    });
+                                  
                                   //perform the search here
                                 },),
                                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
@@ -65,7 +87,7 @@ class CalenderScreenState extends State<CalenderScreen>{
                                 hoverColor: Color.fromARGB(255, 9, 33, 76),   
                             )
                           )
-                        ),
+                        )*/
                         SingleChildScrollView(
                                   child: Container(
                                     height: 530,

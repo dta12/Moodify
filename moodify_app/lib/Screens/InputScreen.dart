@@ -70,9 +70,12 @@ class InputScreenState extends State<InputScreen>{
                             'Content-Type': 'application/json',
                           },
                       body: json.encode ({'sentence': myController.text}));  
-                      var responseData = json.decode(response.body);
+
+                      var responseData = jsonDecode(response.body);
                       String temp = responseData['prediction'];
-                      validate ? null : Navigator.push(context, MaterialPageRoute(builder:(context)=> EmotionScreen(emotion: temp, input: myController.text))); 
+                      String input = myController.text;
+                      myController.clear();
+                      validate ? null : Navigator.push(context, MaterialPageRoute(builder:(context)=> EmotionScreen(emotion: temp, input: input))); 
                       },
                   ),
                   filled: true,
